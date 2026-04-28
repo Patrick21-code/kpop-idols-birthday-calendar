@@ -31,6 +31,7 @@ export function getInitials(name: string): string {
 // Basic check that a string looks like a url
 // used before rendering an image to avoid broken img tags
 
+// we run this check before putting the string into an image tag for example, so the UI doesn't show broken images if the string isn't a valid url
 export function isValidImageUrl(url: string): boolean {
     return url.startsWith('http://') || url.startsWith('https://')
 }
