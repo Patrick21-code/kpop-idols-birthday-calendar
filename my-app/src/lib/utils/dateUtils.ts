@@ -49,3 +49,9 @@ export function getNextBirthday(birthday: string) : Date {
 // returns how many days until the next birthday
 // returns 0 if today is their birthday
 
+export function getDaysUntilBirthday(birthday: string): number {
+  const today = new Date()
+  const next = getNextBirthday(birthday)
+
+  return differenceInCalendarDays(next, today)
+}
