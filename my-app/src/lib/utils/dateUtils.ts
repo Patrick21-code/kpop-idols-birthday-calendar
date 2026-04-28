@@ -73,3 +73,35 @@ export function isBirthdayToday(birthday: string): boolean {
   //getDay() returns the day of the week(0-6, where 0 = sunday, 1 = monday, etc)
 }
 
+// -----------------
+// getCountdownParts
+// -----------------
+// returns the dd // hh // mm / ss breakdown for the live countdown.
+// this is what power the ticking timer boxes in CountdownCard
+
+export function getCountdownParts(birthday: string): {
+  days: number
+  hours: number
+  minutes: number
+  seconds: number
+} {
+  const now = new Date()
+  const next = getNextBirthday(birthday)
+
+  // total milliseconds remaining
+  const totalMs = next.getTime() - now.getTime()
+
+  // if it's today (0 or negative ms), return all zeros
+  if (totalMs <= 0) {
+    return { days: 0, hours: 0, minutes: 0, seconds: 0}
+  }
+
+  // break milliseconds down into human units
+  const days = Math.floor(totalMs / (1000 * 60 * 60 * 24))
+  const hours = Math.floor((totalMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  const minutes = Math.floor((totalMs % (1000 * 60 * 60)) / (1000 * 60))
+  const seconds = Math.floor((totalMs % (1000 * 60)) / 1000)
+
+  return { days, hours, minutes, seconds }
+}
+
