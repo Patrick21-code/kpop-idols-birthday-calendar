@@ -22,3 +22,19 @@ export function getGroupColor(groupName: string): string {
     // means: if the left side is null or undefined, use the right side instead.
 }
 
+// -----------------
+// getGroupType
+// -----------------
+// given a group name, return its type (gg/bg/soloist)
+
+export function getGroupType(groupName: string): GroupType | undefined {
+    const group = groups.find((g) => g.name === groupName)
+    return group?.type
+    //without question mark, it throws an error. 'group' is possibly 'undefined'
+}
+
+// -----------------
+// getGroupNames
+// -----------------
+// Returns just the names of all groups as a string array
+
