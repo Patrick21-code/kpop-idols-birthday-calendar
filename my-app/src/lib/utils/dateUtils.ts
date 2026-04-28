@@ -99,9 +99,11 @@ export function getCountdownParts(birthday: string): {
   // break milliseconds down into human units
   const days = Math.floor(totalMs / (1000 * 60 * 60 * 24))
   const hours = Math.floor((totalMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  //(totalMs % (1000 * 60 * 60 * 24)) strips away the full days, leaving only the leftover milliseconds
   const minutes = Math.floor((totalMs % (1000 * 60 * 60)) / (1000 * 60))
+  //(totalMs % (1000 * 60 * 60)) strips away all the full hours
   const seconds = Math.floor((totalMs % (1000 * 60)) / 1000)
-
+  //(totalMs % (1000 * 60)) strips away all the full minutes
   return { days, hours, minutes, seconds }
 }
 
