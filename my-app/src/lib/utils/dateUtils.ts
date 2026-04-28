@@ -149,7 +149,8 @@ export function getBirthdayMonthDay(birthday: string): {
 
 export function getCalendarDays(date: Date): (number | null) [] {
   const firstDay = startOfMonth(date)
-  const startIndex = getDay(firstDay)
+  const startIndex = getDay(firstDay) //find the weekday index of the first day
+  //example: april 1, 2026 is a wednesday -> startIndex = 3
   const totalDays = getDaysInMonth(date)
 
   const cells: (number | null)[] = []
@@ -158,11 +159,15 @@ export function getCalendarDays(date: Date): (number | null) [] {
   for (let i = 0; i < startIndex ; i++) {
     cells.push(null)
   }
+  //since april 1 is a wednesday (startIndex = 3), we push 3 nulls (0-2)
 
   // fill actual day numbers
   for (let d = 1; d <= totalDays; d++) {
     cells.push(d)
   }
+  //example: totalDays is 30
+  //after this loop, the array looks like:
+  //null, null, null, 1, 2, 3, 4, 5, ..., 30]
 
   return cells
 }
