@@ -18,6 +18,7 @@ export function getGroupColor(groupName: string): string {
     //console.log(group?.color) // undefined (safe)
     //console.log(group.color) // error: cannot read property 'color'
 
+    //the ?. (optional chaining) says "only access ./color if group exists - otherwise return undefined safely"
     // ?? (nullish coalescing operator)
     // means: if the left side is null or undefined, use the right side instead.
 }
