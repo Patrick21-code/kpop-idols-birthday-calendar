@@ -136,4 +136,33 @@ export function getBirthdayMonthDay(birthday: string): {
   }
 }
 
+// -----------------
+// getCalendarDays
+// -----------------
+// given a date, return an array representive every cell
+// in the monthly calendar grid (including empty leading cells)
+// each cell is either null (empty) or a day number
 
+// example for april 2026
+// april 1 is a wednesday (index 3), so cells 0-2 are null
+// [null, null, null, 1, 2, 3, 4, 5, ...]
+
+export function getCalendarDays(date: Date): (number | null) [] {
+  const firstDay = startOfMonth(date)
+  const startIndex = getDay(firstDay)
+  const totalDays = getDaysInMonth(date)
+
+  const cells: (number | null)[] = []
+
+  // fill leading empty cells before day 1
+  for (let i = 0; i < startIndex ; i++) {
+    cells.push(null)
+  }
+
+  // fill actual day numbers
+  for (let d = 1; d <= totalDays; d++) {
+    cells.push(d)
+  }
+
+  return cells
+}
