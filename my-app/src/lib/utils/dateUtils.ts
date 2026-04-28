@@ -107,3 +107,15 @@ export function getCountdownParts(birthday: string): {
   return { days, hours, minutes, seconds }
 }
 
+// -----------------
+// getAge
+// -----------------
+// returns how the idol will be on their next birthday
+
+export function getAge(birthday: string): number {
+  const [yearStr] = birthday.split('-') //1997. take the first element of the array
+  const birthYear = parseInt(yearStr, 10) 
+  const next = getNextBirthday(birthday)
+  return getYear(next) - birthYear
+}
+
