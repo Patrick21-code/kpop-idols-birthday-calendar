@@ -119,3 +119,21 @@ export function getAge(birthday: string): number {
   return getYear(next) - birthYear
 }
 
+// -----------------
+// getBirthdayMonth
+// -----------------
+// returns the month (0-indexed) and day of a birthday string
+// used by the calendar to place idols on the right day cell
+
+export function getBirthdayMonthDay(birthday: string): {
+  month: number // 0-indexed (jan = 0, dec = 11)
+  day: number
+} {
+  const [, monthStr, dayStr] = birthday.split('-')
+  return {
+    month: parseInt(monthStr, 10) - 1,
+    day: parseInt(dayStr, 10),
+  }
+}
+
+
