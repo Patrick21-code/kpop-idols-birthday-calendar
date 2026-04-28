@@ -23,5 +23,14 @@ export function getInitials(name: string): string {
     return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
     //parts[0][0] => first letter of the first word
     //parts[parts.length - 1][0] => first letter of the last word
-    
+}
+
+// -----------------
+// isValidImageUrl
+// -----------------
+// Basic check that a string looks like a url
+// used before rendering an image to avoid broken img tags
+
+export function isValidImageUrl(url: string): boolean {
+    return url.startsWith('http://') || url.startsWith('https://')
 }
