@@ -55,3 +55,21 @@ export function getDaysUntilBirthday(birthday: string): number {
 
   return differenceInCalendarDays(next, today)
 }
+
+// -----------------
+// isBirthdayToday
+// -----------------
+// returns true if the idol's birthday is today (ignores year)
+
+export function isBirthdayToday(birthday: string): boolean {
+  const today = new Date()
+  const [, monthStr, dayStr] = birthday.split('-')
+  const month = parseInt(monthStr, 10) - 1
+  const day = parseInt(dayStr, 10)
+
+  return today.getMonth() === month && today.getDate() === day
+
+  //getDate() returns the day of the month(1-31)
+  //getDay() returns the day of the week(0-6, where 0 = sunday, 1 = monday, etc)
+}
+
