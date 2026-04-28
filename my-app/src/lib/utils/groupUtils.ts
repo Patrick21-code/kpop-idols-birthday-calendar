@@ -38,3 +38,6 @@ export function getGroupType(groupName: string): GroupType | undefined {
 // -----------------
 // Returns just the names of all groups as a string array
 
+export function getGroupNames(): string[] {
+    return groups.map((g) => g.name)
+}
