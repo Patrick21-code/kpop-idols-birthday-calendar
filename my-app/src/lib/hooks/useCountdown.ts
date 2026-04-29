@@ -16,6 +16,7 @@ export function useCountdown(birthday: string): CountdownParts {
 
     //useState stores the current coundown value
 
+    //the <CountdownParts> is a generic - you're telling typescript what type of data this state holds
     const [parts, setParts] = useState<CountdownParts>(() =>
         getCountdownParts(birthday)
     )
@@ -26,7 +27,7 @@ export function useCountdown(birthday: string): CountdownParts {
         const interval = setInterval(() => {
             setParts(getCountdownParts(birthday)) //each tick calls getCountdownParts(birthday) again, so the countdown stays live
         }, 1000)
-        
+
         //cleanup function
         //when the component using this hook unmounts (disappears from screen)
         // react calls this to stop the interval - otherwise it keeps running forever
