@@ -5,11 +5,12 @@ import { getCalendarDays, getBirthdayMonthDay } from '@/lib/utils/dateUtils'
 import { getMonth, getYear } from 'date-fns'
 import { Idol } from '@/lib/types'
 
+
 // what the hook returns for each day cell
 interface CalendarDay {
     day: number | null  //null means empty cell (before day 1)
     idols: Idol[]       //idols whose birthday falls on this day
-    isToday: boolean    //whether this cell is today's date
+    isToday: boolean    //true if this cell is today's date
 }
 
 export function useCalendar(currentMonth: Date, filteredIdols: Idol[]): CalendarDay[] {
@@ -19,9 +20,12 @@ export function useCalendar(currentMonth: Date, filteredIdols: Idol[]): Calendar
     const calendarDays = useMemo(() => {
 
         const cells = getCalendarDays(currentMonth)
+
+        //needed to compare birthdays against the month being displayed
         const currentMonthIndex = getMonth(currentMonth) // 0-indexed
         const currentYear = getYear(currentMonth)
 
+        
         const today = new Date()
         const todayDay = today.getDate()
         const todayMonth = today.getMonth()
